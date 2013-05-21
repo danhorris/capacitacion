@@ -5,5 +5,7 @@ package ar.com.telefonia;
  *
  */
 public class Cliente {
+	
+	PlanTelefono planCliente;
 
 }
