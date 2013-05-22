@@ -8,10 +8,24 @@ import java.math.BigDecimal;
  */
 public class PlanTelefono {
 	
-	BigDecimal costo;
+	private BigDecimal costo;
 	
-	Integer minutosPlan;
-	
-	
+	private Integer minutosPlan;
+
+	public BigDecimal getCosto() {
+		return costo;
+	}
+
+	public void setCosto(BigDecimal costo) {
+		this.costo = costo;
+	}
+
+	public Integer getMinutosPlan() {
+		return minutosPlan;
+	}
+
+	public void setMinutosPlan(Integer minutosPlan) {
+		this.minutosPlan = minutosPlan;
+	}	
 
 }
