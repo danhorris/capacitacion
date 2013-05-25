@@ -8,17 +8,13 @@ public class CalculadorPrimosTest {
 	public void test() {
 		CalculadorPrimos calculator = new CalculadorPrimos();
 		calculator.start();
-		calculator.start();
-		 
-		 try {
-			Thread.sleep(CalculadorPrimos.TEN_SECONDS);
-		} catch (InterruptedException e) {
 		
-			e.printStackTrace();
+		//Java nos obliga a catchear posibles excepciones
+		 try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			
 		}
-
 		 calculator.finished = true;
-
 	}
-
 }
