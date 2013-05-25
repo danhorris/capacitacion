@@ -1,6 +1,7 @@
 package ar.capacitacion.threads;
 
 /**
+ * Calcula numeros primos en 10 segundos. 
  * @author dan
  * 
  */
