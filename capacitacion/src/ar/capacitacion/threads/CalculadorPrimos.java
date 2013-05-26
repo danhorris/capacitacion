@@ -11,7 +11,7 @@ public class CalculadorPrimos extends Thread {
 	private static final int MAX_PRIMES = 1000000;
 
 	/* variable compartida */
-	public boolean finished = false;
+	public volatile boolean finished = false;
 
 	public void run() {
 		int[] primes = new int[MAX_PRIMES];
