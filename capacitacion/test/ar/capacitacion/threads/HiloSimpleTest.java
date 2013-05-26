@@ -4,6 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+/**
+ * Ejemplo basico de un test corriendo.
+ * 
+ * @author dan
+ * 
+ */
 public class HiloSimpleTest {
 
 	@Test
