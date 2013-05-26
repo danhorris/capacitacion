@@ -11,7 +11,8 @@ import org.junit.Test;
 public class TestThreadsJoinBetween {
 
 	public class Hilo1 extends Thread {
-		long sleep;
+
+		private long sleep;
 
 		public Hilo1(long sleepTime) {
 			this.sleep = sleepTime;
