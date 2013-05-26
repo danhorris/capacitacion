@@ -11,6 +11,7 @@ public class CalculadorPrimosTest {
 		
 		//Java nos obliga a catchear posibles excepciones
 		 try {
+			 // duermo por dos segundos
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			
