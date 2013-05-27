@@ -1,60 +1,57 @@
 package ar.capacitacion.threads;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 public class TestSynchronized {
 
 	/*Instancia compartida*/
-	public class ObjetoCompartido  {
-		public int posicion =0;
+	public class Secuenciador  {
 		
-		public synchronized void setPosicion(int posicion) {
-			this.posicion = posicion;
+		public int siguiente =0;
+		
+		public void setSiguiente(int siguiente) {
+			this.siguiente = siguiente;
 		}
-		public int getPosicion() {
-			return posicion;
+		public int getSiguiente() {
+			return siguiente;
 		}
 	}
 	
 	//Hilo1
 	public class Hilo1 extends Thread {
-		private ObjetoCompartido referencia;
-		public Hilo1(ObjetoCompartido objeto1) {
+		private Secuenciador referencia;
+		public Hilo1(Secuenciador objeto1) {
 		this.referencia = objeto1;
 		}
 		
 		@Override
 		public void run() {
-			int nuevaPosicion = referencia.getPosicion() + 100; 
-			referencia.setPosicion(nuevaPosicion);
-			System.out.println("Hilo1 " + referencia.getPosicion());
+			referencia.setSiguiente(referencia.getSiguiente()+1);
+			System.out.println("Obtuve " + referencia.getSiguiente());
 		}
 	}
 
-	//Hilo2
-	public class Hilo2 extends Thread {
-		private ObjetoCompartido referencia;
-		public Hilo2(ObjetoCompartido objeto1) {
-		this.referencia = objeto1;
-		}
-
-		@Override
-		public void run() {
-			int nuevaPosicion = referencia.getPosicion() + 200; 
-			referencia.setPosicion(nuevaPosicion);
-			System.out.println("Hilo2 " + referencia.getPosicion());
-		}
-	}
 	
 	@Test
 	public void testSynchronized() {
-		ObjetoCompartido objeto = new ObjetoCompartido();
-		Hilo1 hilo1 = new Hilo1(objeto);
-		Hilo2 hilo2 = new Hilo2(objeto);
-		hilo1.start();		
-		hilo2.start();
+		Secuenciador objeto = new Secuenciador();
+		List<Thread> hilos = new ArrayList<Thread>();
 		
+		for (int i = 0; i < 20; i++) {
+			Hilo1 hilo1 = new Hilo1(objeto);
+			hilos.add(hilo1);
+			hilo1.start();
+			try {
+				hilo1.join();
+			} catch (InterruptedException e) {
+			}
+		}
 		
+				
+
 	}
 
 }
