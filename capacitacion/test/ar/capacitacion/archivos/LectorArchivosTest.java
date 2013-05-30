@@ -9,7 +9,7 @@ import org.junit.Test;
 public class LectorArchivosTest {
 
 	@Test
-	public void testPathArchivoCorrecto() {
+	public void testPathArchivoURLCompleta() {
 		LectorArchivos lector = new LectorArchivos();
 		List<String> lineas = lector
 				.leerLineas("c:/Users/dan/Documents/GitHub/capacitacion/capacitacion/resources/archivo.txt");
