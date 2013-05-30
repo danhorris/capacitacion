@@ -25,7 +25,7 @@ public class TestThreadDaemon {
 		try {
 			hilo1.join();
 		} catch (InterruptedException e) {
-			System.out.println("saliendo");
+		
 		}
 	}
 
