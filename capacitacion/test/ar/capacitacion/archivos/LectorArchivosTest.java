@@ -1,5 +1,9 @@
 package ar.capacitacion.archivos;
 
+import static org.junit.Assert.assertFalse;
+
+import java.util.List;
+
 import org.junit.Test;
 
 public class LectorArchivosTest {
@@ -7,6 +11,9 @@ public class LectorArchivosTest {
 	@Test
 	public void testPathArchivoCorrecto() {
 		LectorArchivos lector = new LectorArchivos();
-		lector.leer("c:/Users/dan/Documents/GitHub/capacitacion/capacitacion/resources/archivo.txt");
+		List<String> lineas = lector
+				.leerLineas("c:/Users/dan/Documents/GitHub/capacitacion/capacitacion/resources/archivo.txt");
+		assertFalse(lineas.isEmpty());
+
 	}
 }

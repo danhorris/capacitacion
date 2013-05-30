@@ -3,6 +3,8 @@ package ar.capacitacion.archivos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -11,7 +13,8 @@ import java.io.FileReader;
  */
 public class LectorArchivos {
 
-	public void leer(String nombreArchivo) {
+	public List<String> leerLineas(String nombreArchivo) {
+		List<String> lineasLeidas = new ArrayList<String>();
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -26,7 +29,7 @@ public class LectorArchivos {
 			// Lectura del fichero
 			String linea;
 			while ((linea = br.readLine()) != null)
-				System.out.println(linea);
+				lineasLeidas.add(linea);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -41,6 +44,7 @@ public class LectorArchivos {
 				e2.printStackTrace();
 			}
 		}
+		return lineasLeidas;
 	}
 
 }
