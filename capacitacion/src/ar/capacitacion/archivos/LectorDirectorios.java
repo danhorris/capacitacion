@@ -15,6 +15,9 @@ public class LectorDirectorios {
 	/*directorio de archivos*/
 	private String dirPath;
 		
+	/**
+	 * @return nombres de archivos en un directorio
+	 */
 	public List<String> obtenerArchivosDeDirectorio(){
 		
 		List<String> filenames = new ArrayList<String>();
