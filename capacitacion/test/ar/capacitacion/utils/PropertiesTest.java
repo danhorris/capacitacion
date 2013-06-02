@@ -16,7 +16,6 @@ public class PropertiesTest {
 			properties.load(new FileInputStream("project.properties"));
 		} catch (Exception e) {
 		}
-		assertNotNull(properties.getProperty("dir.input"));
-		
+		assertNotNull(properties.getProperty("dir.path.input"));
 	}
 }
