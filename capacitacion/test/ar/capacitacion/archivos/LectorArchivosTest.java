@@ -11,6 +11,8 @@ public class LectorArchivosTest {
 	@Test
 	public void testPathArchivoCorrecto() {
 		LectorArchivos lector = new LectorArchivos();
+		
+		/*revisar path de ubicacion archivo*/
 		List<String> lineas = lector
 				.leerLineas("c:/Users/dan/Documents/GitHub/capacitacion/capacitacion/resources/archivo.txt");
 		assertFalse(lineas.isEmpty());
