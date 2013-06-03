@@ -7,8 +7,15 @@ import java.util.Properties;
 
 import org.junit.Test;
 
+/**
+ * @author dan
+ * 
+ */
 public class PropertiesTest {
 
+	/**
+	 * Test de lectura de archivo propierties
+	 */
 	@Test
 	public void testPropertiesFile() {
 		Properties properties = new Properties();
