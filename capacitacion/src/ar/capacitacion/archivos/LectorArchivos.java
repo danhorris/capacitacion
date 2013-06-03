@@ -37,6 +37,8 @@ public class LectorArchivos {
 	}
 
 	/**
+	 * Recorre archivo separando las lineas vacias.
+	 * <p>
 	 * Retorna las lineas de un archivo.
 	 * 
 	 * @return
