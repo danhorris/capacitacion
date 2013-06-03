@@ -10,16 +10,14 @@ import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
 
-
-
 /**
  * @author dan
- *
+ * 
  */
 public class LectorDirectoriosTest {
-	
+
 	private String dirName;
-	
+
 	@Before
 	public void initTest() {
 		Properties properties = new Properties();
@@ -30,14 +28,11 @@ public class LectorDirectoriosTest {
 		}
 		dirName = (String) properties.get("dir.path.input");
 	}
-	
-	
+
 	@Test
 	public void testDirectorios() {
-		LectorDirectorios dir = new LectorDirectorios();
-		dir.setDirPath(dirName);
+		LectorDirectorios dir = new LectorDirectorios(dirName);
 		assertFalse(dir.obtenerArchivosDeDirectorio().isEmpty());
 	}
-	
 
 }
