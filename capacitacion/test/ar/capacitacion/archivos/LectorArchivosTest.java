@@ -10,13 +10,8 @@ public class LectorArchivosTest {
 
 	@Test
 	public void testPathArchivoCorrecto() {
-		
-		/*revisar path*/
-		LectorArchivos lector = new LectorArchivos(
-				"C:/Users/Candela/archivosCapacitacion/20121130.txt");
-
+		LectorArchivos lector = new LectorArchivos("resources/archivo.txt");
 		List<String> lineas = lector.leer();
 		assertFalse(lineas.isEmpty());
-
 	}
 }
