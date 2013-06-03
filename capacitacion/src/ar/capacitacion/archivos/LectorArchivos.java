@@ -37,7 +37,7 @@ public class LectorArchivos {
 	}
 
 	/**
-	 * Retorna las lineas de un archivo. TODO hay que cerrar archivo?
+	 * Retorna las lineas de un archivo. 
 	 * 
 	 * @return
 	 */
