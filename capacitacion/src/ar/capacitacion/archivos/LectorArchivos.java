@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase que retorna las lineas no vacias de un archivo con un path especifico.
  * 
  * @author dan
  * 
@@ -57,7 +58,6 @@ public class LectorArchivos {
 		} catch (IOException error) {
 			System.out.println(error.getMessage());
 		}
-
 		return lineasLeidas;
 	}
 
