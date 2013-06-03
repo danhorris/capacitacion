@@ -14,12 +14,15 @@ import java.util.List;
  * 
  */
 public class LectorArchivos {
-	
+
+	private static final String VACIO = "";
 	private File file;
 	private FileReader fileReader;
 	private BufferedReader buffer;
+	private String lineaLeida;
 
 	/**
+	 * 
 	 * @param pathFile
 	 */
 	public LectorArchivos(String pathFile) {
@@ -32,22 +35,27 @@ public class LectorArchivos {
 		}
 		buffer = new BufferedReader(fileReader);
 	}
-	
 
 	/**
 	 * Retorna las lineas de un archivo. TODO hay que cerrar archivo?
+	 * 
 	 * @return
 	 */
 	public List<String> leer() {
 		List<String> lineasLeidas = new ArrayList<String>();
 		try {
 			while (buffer.ready()) {
-				lineasLeidas.add(buffer.readLine());
+				lineaLeida = buffer.readLine();
+				if (!lineaLeida.equals(VACIO)){ 
+					lineasLeidas.add(lineaLeida);	
+				}
 			}
+			buffer.close();
 		} catch (IOException error) {
 			System.out.println(error.getMessage());
 		}
+
 		return lineasLeidas;
 	}
-	
+
 }
