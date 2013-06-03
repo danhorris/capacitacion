@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class LectorArchivos {
 
-	private static final String VACIO = " ";
+	private static final String VACIO = "";
 	private File file;
 	private FileReader fileReader;
 	private BufferedReader buffer;
@@ -37,7 +37,7 @@ public class LectorArchivos {
 	}
 
 	/**
-	 * Retorna las lineas de un archivo. 
+	 * Retorna las lineas de un archivo.
 	 * 
 	 * @return
 	 */
@@ -46,8 +46,9 @@ public class LectorArchivos {
 		try {
 			while (buffer.ready()) {
 				lineaLeida = buffer.readLine();
-				if (!lineaLeida.equals(VACIO)){ 
-					lineasLeidas.add(lineaLeida);	
+				lineaLeida = lineaLeida.trim();
+				if (!lineaLeida.equals(VACIO)) {
+					lineasLeidas.add(lineaLeida);
 				}
 			}
 			buffer.close();
