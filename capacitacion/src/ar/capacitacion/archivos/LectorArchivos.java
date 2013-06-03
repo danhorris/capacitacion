@@ -2,7 +2,9 @@ package ar.capacitacion.archivos;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,37 +15,46 @@ import java.util.List;
  */
 public class LectorArchivos {
 
-	public List<String> leerLineas(String nombreArchivo) {
-		List<String> lineasLeidas = new ArrayList<String>();
-		File archivo = null;
-		FileReader fr = null;
-		BufferedReader br = null;
+	private static final String VACIO = " ";
+	private File file;
+	private FileReader fileReader;
+	private BufferedReader buffer;
+	private String lineaLeida;
 
+	/**
+	 * 
+	 * @param pathFile
+	 */
+	public LectorArchivos(String pathFile) {
+		super();
+		file = new File(pathFile);
 		try {
-			// Apertura del fichero y creacion de BufferedReader para poder
-			// hacer una lectura comoda (disponer del metodo readLine()).
-			archivo = new File(nombreArchivo);
-			fr = new FileReader(archivo);
-			br = new BufferedReader(fr);
-
-			// Lectura del fichero
-			String linea;
-			while ((linea = br.readLine()) != null)
-				lineasLeidas.add(linea);
-		} catch (Exception e) {
-
-		} finally {
-			// En el finally cerramos el fichero, para asegurarnos
-			// que se cierra tanto si todo va bien como si salta
-			// una excepcion.
-			try {
-				if (null != fr) {
-					fr.close();
-				}
-			} catch (Exception e2) {
-
-			}
+			fileReader = new FileReader(file);
+		} catch (FileNotFoundException error) {
+			System.out.println(error.getMessage());
 		}
+		buffer = new BufferedReader(fileReader);
+	}
+
+	/**
+	 * Retorna las lineas de un archivo. 
+	 * 
+	 * @return
+	 */
+	public List<String> leer() {
+		List<String> lineasLeidas = new ArrayList<String>();
+		try {
+			while (buffer.ready()) {
+				lineaLeida = buffer.readLine();
+				if (!lineaLeida.equals(VACIO)){ 
+					lineasLeidas.add(lineaLeida);	
+				}
+			}
+			buffer.close();
+		} catch (IOException error) {
+			System.out.println(error.getMessage());
+		}
+
 		return lineasLeidas;
 	}
 
