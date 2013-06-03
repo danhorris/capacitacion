@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class LectorArchivos {
 
-	private static final String VACIO = "";
+	private static final String VACIO = " ";
 	private File file;
 	private FileReader fileReader;
 	private BufferedReader buffer;
