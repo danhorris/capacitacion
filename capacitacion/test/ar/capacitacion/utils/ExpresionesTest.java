@@ -37,7 +37,19 @@ public class ExpresionesTest {
 		assertTrue(edadValida.matches("[0-9]{1,3}"));
 		edadValida = "1000";
 		assertFalse(edadValida.matches("[0-9]{1,3}"));
-		edadValida = "dos";
-		assertFalse(edadValida.matches("[0-9]{1,3}"));
+
+		String edadInvalida = "dos";
+		assertFalse(edadInvalida.matches("[0-9]{1,3}"));
+
+		// Que pasa si pongo 0, es valido
+		edadValida = "0";
+		assertTrue(edadValida.matches("[0-9]{1,3}"));
+
+		// primer caracter entre 1-9 los siguientes dos opcionales ()? 0-9
+		edadValida = "11";
+		assertTrue(edadValida.matches("[1-9]{1}([0-9]{1,2})?"));
+
+		edadInvalida = "09";
+		assertFalse(edadInvalida.matches("[1-9]{1}([0-9]{1,2})?"));
 	}
 }
