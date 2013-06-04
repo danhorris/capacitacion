@@ -18,5 +18,8 @@ public class ExpresionesTest {
 		// rexexp "." un caracter
 		String prueba2 = "a";
 		assertTrue(prueba2.matches("."));
+
+		String prueba3 = "regex";
+		assertTrue(prueba3.matches("regex$"));
 	}
 }
