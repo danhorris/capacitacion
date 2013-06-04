@@ -19,7 +19,12 @@ public class ExpresionesTest {
 		String prueba2 = "a";
 		assertTrue(prueba2.matches("."));
 
-		String prueba3 = "regex";
-		assertTrue(prueba3.matches("regex$"));
+		// Comienza con regex
+		String prueba3 = "regex1236";
+		assertTrue(prueba3.matches("^regex"));
+
+		// Termina con regex
+		String prueba4 = "1236regex";
+		assertTrue(prueba4.matches("regex$"));
 	}
 }
