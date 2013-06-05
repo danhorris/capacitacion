@@ -61,4 +61,24 @@ public class LectorArchivos {
 		return lineasLeidas;
 	}
 
+	/**
+	 * @param regex
+	 * @return
+	 */
+	public List<String> leerFiltrandoPorRexExp(String regex) {
+		List<String> lineasLeidas = new ArrayList<String>();
+		try {
+			while (buffer.ready()) {
+				lineaLeida = buffer.readLine().trim();
+				if (lineaLeida.matches(regex)) {
+					lineasLeidas.add(lineaLeida);
+				}
+			}
+			buffer.close();
+		} catch (IOException error) {
+			System.out.println(error.getMessage());
+		}
+		return lineasLeidas;
+	}
+
 }
