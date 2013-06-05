@@ -41,7 +41,7 @@ public class ExpresionesTest {
 		String edadInvalida = "dos";
 		assertFalse(edadInvalida.matches("[0-9]{1,3}"));
 
-		// Que pasa si pongo 0, es valido
+		// Que pasa si pongo 0, es valido segun pattern
 		edadValida = "0";
 		assertTrue(edadValida.matches("[0-9]{1,3}"));
 
