@@ -21,6 +21,7 @@ public class LectorArchivos {
 	private FileReader fileReader;
 	private BufferedReader buffer;
 	private String lineaLeida;
+	private String regExp;
 
 	/**
 	 * 
@@ -65,12 +66,12 @@ public class LectorArchivos {
 	 * @param regex
 	 * @return
 	 */
-	public List<String> leerFiltrandoPorRexExp(String regex) {
+	public List<String> leerFiltrandoPorRexExp() {
 		List<String> lineasLeidas = new ArrayList<String>();
 		try {
 			while (buffer.ready()) {
 				lineaLeida = buffer.readLine().trim();
-				if (lineaLeida.matches(regex)) {
+				if (lineaLeida.matches(regExp)) {
 					lineasLeidas.add(lineaLeida);
 				}
 			}
@@ -79,6 +80,14 @@ public class LectorArchivos {
 			System.out.println(error.getMessage());
 		}
 		return lineasLeidas;
+	}
+
+	public String getRegExp() {
+		return regExp;
+	}
+
+	public void setRegExp(String regExp) {
+		this.regExp = regExp;
 	}
 
 }

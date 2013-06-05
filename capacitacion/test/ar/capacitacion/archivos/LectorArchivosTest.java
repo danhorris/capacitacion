@@ -19,14 +19,13 @@ public class LectorArchivosTest {
 	@Test
 	public void testLeerLineasConRexExp() {
 		LectorArchivos lector = new LectorArchivos("resources/archivo.txt");
-
-		List<String> lineas = lector.leerFiltrandoPorRexExp(".*Sanchez.*");
+		lector.setRegExp(".*Sanchez.*");
+		List<String> lineas = lector.leerFiltrandoPorRexExp();
 		assertEquals(lineas.size(), 1);
 
 		LectorArchivos lector2 = new LectorArchivos("resources/archivo.txt");
-
-		List<String> lineas2 = lector2
-				.leerFiltrandoPorRexExp(".*(Sanchez|Martinez).*");
+		lector2.setRegExp(".*(Sanchez|Martinez).*");
+		List<String> lineas2 = lector2.leerFiltrandoPorRexExp();
 		assertEquals(lineas2.size(), 2);
 	}
 }
