@@ -34,21 +34,26 @@ public class ExpresionesTest {
 		// edad valida de 1 a 999
 		// [0-9] indico numeros posibles
 		// y ocurrencias {desde,hasta}
+		String patternEdad = "[0-9]{1,3}";
+
 		String edadValida = "77";
-		assertTrue(edadValida.matches("[0-9]{1,3}"));
+		assertTrue(edadValida.matches(patternEdad));
+
 		edadValida = "2";
-		assertTrue(edadValida.matches("[0-9]{1,3}"));
+		assertTrue(edadValida.matches(patternEdad));
+
 		edadValida = "999";
-		assertTrue(edadValida.matches("[0-9]{1,3}"));
+		assertTrue(edadValida.matches(patternEdad));
+
 		edadValida = "1000";
-		assertFalse(edadValida.matches("[0-9]{1,3}"));
+		assertFalse(edadValida.matches(patternEdad));
 
 		String edadInvalida = "dos";
-		assertFalse(edadInvalida.matches("[0-9]{1,3}"));
+		assertFalse(edadInvalida.matches(patternEdad));
 
 		// Que pasa si pongo 0, es valido segun pattern
 		edadValida = "0";
-		assertTrue(edadValida.matches("[0-9]{1,3}"));
+		assertTrue(edadValida.matches(patternEdad));
 
 		// primer caracter entre 1-9
 		// los siguientes dos opcionales ()? 0-9
@@ -62,17 +67,19 @@ public class ExpresionesTest {
 	@Test
 	public void testEmail() {
 		// + indica una o mas ocurrencias
+		String patternEmailValido = "[a-zA-Z0-9]+\\@[a-zA-Z0-9]+\\.[a-zA-Z]+";
+
 		String emailDan = "danhorris@gmail.com";
-		assertTrue(emailDan.matches("[a-zA-Z0-9]+\\@[a-zA-Z0-9]+\\.[a-zA-Z]+"));
+		assertTrue(emailDan.matches(patternEmailValido));
 
 		emailDan = "danhorris@gmail.";
-		assertFalse(emailDan.matches("[a-zA-Z0-9]+\\@[a-zA-Z0-9]+\\.[a-zA-Z]+"));
+		assertFalse(emailDan.matches(patternEmailValido));
 
 		emailDan = "@gmail.com";
-		assertFalse(emailDan.matches("[a-zA-Z0-9]+\\@[a-zA-Z0-9]+\\.[a-zA-Z]+"));
+		assertFalse(emailDan.matches(patternEmailValido));
 
 		emailDan = "danhorris@gmailcom";
-		assertFalse(emailDan.matches("[a-zA-Z0-9]+\\@[a-zA-Z0-9]+\\.[a-zA-Z]+"));
+		assertFalse(emailDan.matches(patternEmailValido));
 
 	}
 }
