@@ -3,6 +3,9 @@ package ar.capacitacion.utils;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.junit.Test;
 
 public class ExpresionesTest {
@@ -57,8 +60,11 @@ public class ExpresionesTest {
 
 		// primer caracter entre 1-9
 		// los siguientes dos opcionales ()? 0-9
+		// Ahora usando Pattern y Matcher es otra manera de hacer lo mismo
+		Pattern pattern = Pattern.compile("[1-9]{1}([0-9]{1,2})?");
 		edadValida = "11";
-		assertTrue(edadValida.matches("[1-9]{1}([0-9]{1,2})?"));
+		Matcher matcher = pattern.matcher(edadValida);
+		assertTrue(matcher.matches());
 
 		edadInvalida = "09";
 		assertFalse(edadInvalida.matches("[1-9]{1}([0-9]{1,2})?"));
