@@ -7,3 +7,7 @@ Temas
 
 Threads
 Manejo de Archivos
+Expresiones Regulares
+Sockets
+RMI (Remote Method Invocation)
+
