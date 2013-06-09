@@ -36,7 +36,7 @@ public class EchoClientTest {
 	@Test(expected = ConnectException.class)
 	public void testConnection() throws UnknownHostException, IOException {
 		client = new EchoClient();
-		client.connectToServer("localhost", 5555);
+		client.connectToServer("localhost", 6000);
 	}
 
 	@Test
@@ -56,14 +56,13 @@ public class EchoClientTest {
 	}
 
 	@After
-	public void cerrarSocket() {
+	public void cerrarSocket() throws IOException {
 		if (client.getSocket() != null) {
-			try {
-				client.getSocket().close();
-			} catch (IOException error) {
-				System.out.println(error.getMessage());
-			}
+			client.getSocket().close();
 		}
-	}
+		if (server != null && server.getSocketServer() != null) {
+			server.getSocketServer().close();
+		}
 
+	}
 }
