@@ -1,8 +1,8 @@
 package ar.capacitacion.sockets;
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -14,14 +14,14 @@ public class EchoClient extends EchoSocket {
 
 	private Socket socket;
 	private DataInputStream inputStream;
-	private DataOutputStream outPutStream;
+	private PrintStream outPutStream;
 
 	public Socket connectToServer(String adress, int port)
 			throws UnknownHostException, IOException {
 
 		socket = new Socket(adress, port);
 		inputStream = new DataInputStream(socket.getInputStream());
-		outPutStream = new DataOutputStream(socket.getOutputStream());
+		outPutStream = new PrintStream(socket.getOutputStream());
 		return socket;
 	}
 
@@ -30,12 +30,6 @@ public class EchoClient extends EchoSocket {
 	}
 
 	public void setMensajeServidor(String string) {
-		try {
-			outPutStream.writeChars(string);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		outPutStream.println(string);
 	}
-
 }
