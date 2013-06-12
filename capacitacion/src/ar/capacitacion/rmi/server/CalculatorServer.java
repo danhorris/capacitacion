@@ -5,6 +5,10 @@ import java.rmi.Naming;
 import ar.capacitacion.rmi.CalculatorImpl;
 import ar.capacitacion.rmi.ICalculator;
 
+/**
+ * @author dan
+ * 
+ */
 public class CalculatorServer {
 
 	public void start() {

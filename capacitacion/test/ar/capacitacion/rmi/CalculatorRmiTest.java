@@ -50,8 +50,18 @@ public class CalculatorRmiTest {
 		}
 	}
 
+	@Test
+	public void testRemoteSubstraction() {
+		try {
+			Assert.assertEquals(new CalculatorClient().obtenerCalculator()
+					.subtraction(10, 5), 5);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@After
-	public void name() {
+	public void desregistrar() {
 		try {
 			UnicastRemoteObject.unexportObject(registry, true);
 		} catch (NoSuchObjectException e) {
