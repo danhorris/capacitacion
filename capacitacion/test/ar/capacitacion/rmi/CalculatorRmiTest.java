@@ -1,6 +1,5 @@
 package ar.capacitacion.rmi;
 
-import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -63,8 +62,9 @@ public class CalculatorRmiTest {
 	@After
 	public void desregistrar() {
 		try {
+			registry.unbind("Calculator");
 			UnicastRemoteObject.unexportObject(registry, true);
-		} catch (NoSuchObjectException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
