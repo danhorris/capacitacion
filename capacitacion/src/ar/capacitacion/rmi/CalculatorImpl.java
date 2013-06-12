@@ -21,25 +21,25 @@ public class CalculatorImpl extends UnicastRemoteObject implements ICalculator {
 	@Override
 	public long addition(long a, long b) {
 
-		return 0;
+		return a + b;
 	}
 
 	@Override
 	public long subtraction(long a, long b) {
 
-		return 0;
+		return a - b;
 	}
 
 	@Override
 	public long multiplication(long a, long b) {
 
-		return 0;
+		return a * b;
 	}
 
 	@Override
 	public long division(long a, long b) {
 
-		return 0;
+		return a / b;
 	}
 
 }
