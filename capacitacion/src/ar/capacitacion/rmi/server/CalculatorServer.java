@@ -15,7 +15,8 @@ public class CalculatorServer {
 		try {
 			ICalculator c = new CalculatorImpl();
 			// rmi://localhost:port/application_name
-			Naming.rebind("rmi://localhost:1099/CalculatorService", c);
+
+			Naming.rebind("Calculator", c);
 		} catch (Exception error) {
 			System.out.println(error.getMessage());
 		}

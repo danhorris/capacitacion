@@ -12,8 +12,8 @@ public class CalculatorClient {
 
 			// documentar alternativa
 
-			calculator = (ICalculator) Naming
-					.lookup("//127.0.0.1:1099/CalculatorService");
+			calculator = (ICalculator) Naming.lookup("Calculator");
+
 		} catch (Exception error) {
 			System.out.println(error.getMessage());
 		}
