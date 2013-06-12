@@ -1,11 +1,14 @@
 package ar.capacitacion.rmi;
 
+import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 import junit.framework.Assert;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,23 +18,45 @@ import ar.capacitacion.rmi.server.CalculatorServer;
 public class CalculatorRmiTest {
 
 	private Registry registry;
+	private CalculatorServer server;
 
 	@Before
 	public void crearRegistro() {
 		try {
+
 			registry = LocateRegistry.createRegistry(1099);
+
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		server = new CalculatorServer();
+		server.start();
 
 	}
 
 	@Test
 	public void testBingObject() {
-
-		new CalculatorServer().start();
 		Assert.assertNotNull(new CalculatorClient().obtenerCalculator());
+	}
+
+	@Test
+	public void testRemoteMultiplication() {
+		try {
+			Assert.assertEquals(new CalculatorClient().obtenerCalculator()
+					.multiplication(4, 6), 24);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@After
+	public void name() {
+		try {
+			UnicastRemoteObject.unexportObject(registry, true);
+		} catch (NoSuchObjectException e) {
+			e.printStackTrace();
+		}
 
 	}
 
