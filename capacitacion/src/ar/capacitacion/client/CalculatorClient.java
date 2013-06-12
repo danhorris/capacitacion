@@ -1,6 +1,7 @@
 package ar.capacitacion.client;
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 
 import ar.capacitacion.rmi.ICalculator;
 
@@ -19,4 +20,11 @@ public class CalculatorClient {
 		}
 		return calculator;
 	}
+
+	public long sumarRemotamente(long a, long b) throws RemoteException {
+
+		return this.obtenerCalculator().addition(a, b);
+
+	}
+
 }

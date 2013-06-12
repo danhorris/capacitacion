@@ -59,6 +59,16 @@ public class CalculatorRmiTest {
 		}
 	}
 
+	@Test
+	public void testSumarRemotamente() {
+		try {
+			Assert.assertEquals(new CalculatorClient().sumarRemotamente(10, 5),
+					15);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@After
 	public void desregistrar() {
 		try {
