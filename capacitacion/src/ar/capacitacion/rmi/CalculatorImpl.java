@@ -13,32 +13,25 @@ public class CalculatorImpl extends UnicastRemoteObject implements ICalculator {
 		super();
 	}
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 874189387000212654L;
 
 	@Override
 	public long addition(long a, long b) {
-
 		return a + b;
 	}
 
 	@Override
 	public long subtraction(long a, long b) {
-
 		return a - b;
 	}
 
 	@Override
 	public long multiplication(long a, long b) {
-
 		return a * b;
 	}
 
 	@Override
 	public long division(long a, long b) {
-
 		return a / b;
 	}
 
