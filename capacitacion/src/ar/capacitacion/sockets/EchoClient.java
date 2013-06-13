@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
  * @author dan
  * 
  */
-public class EchoClient extends EchoSocket {
+public class EchoClient {
 
 	private Socket socket;
 	private DataInputStream inputStream;
