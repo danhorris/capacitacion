@@ -22,6 +22,9 @@ public class ServerRMI {
 		}
 	}
 
+	/**
+	 * Simulate start a Server RMI
+	 */
 	public void start() {
 		try {
 			ICalculator c = new CalculatorImpl();
