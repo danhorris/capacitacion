@@ -1,37 +1,23 @@
 package ar.capacitacion.rmi;
 
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 
 import junit.framework.Assert;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import ar.capacitacion.client.CalculatorClient;
-import ar.capacitacion.rmi.server.CalculatorServer;
+import ar.capacitacion.rmi.client.CalculatorClient;
+import ar.capacitacion.rmi.server.ServerRMI;
 
 public class CalculatorRmiTest {
 
-	private Registry registry;
-	private CalculatorServer server;
+	private ServerRMI server;
 
 	@Before
 	public void crearRegistro() {
-		try {
-
-			registry = LocateRegistry.createRegistry(1099);
-
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-
-		server = new CalculatorServer();
+		server = new ServerRMI();
 		server.start();
-
 	}
 
 	@Test
@@ -67,17 +53,6 @@ public class CalculatorRmiTest {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@After
-	public void desregistrar() {
-		try {
-			registry.unbind("Calculator");
-			UnicastRemoteObject.unexportObject(registry, true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 	}
 
 }
