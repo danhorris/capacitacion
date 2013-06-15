@@ -11,9 +11,13 @@ public class H2Connection {
 	public Connection getConnection() {
 		Connection conn = null;
 		try {
+
+			// invoke static to method load() in class "org.h2.Driver"
+			// DriverManager.registerDriver(INSTANCE);
 			Class.forName("org.h2.Driver");
+
+			// protocol:vendor:driver:server:port:serverInstance
 			conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
-			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
