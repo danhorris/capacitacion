@@ -3,6 +3,10 @@ package ar.capacitacion.jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * @author dan
+ *
+ */
 public class H2Connection {
 
 	/**
