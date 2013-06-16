@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Date;
+import java.util.Calendar;
 
 
 /**
@@ -59,10 +60,14 @@ public class H2Acces {
 		PreparedStatement preparedStatement = conn
 				.prepareStatement("insert into TEST values (default, ?, ?, ?, ?)");
 
-		preparedStatement.setString(2, user);
-		preparedStatement.setString(3, email);
-		preparedStatement.setDate(4, new Date(2013,6,14));
-		preparedStatement.setString(5, comentario);
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new java.util.Date());
+		
+		preparedStatement.setString(1, user);
+		preparedStatement.setString(2, email);
+		preparedStatement.setDate(3, new Date(calendar.getTimeInMillis()));
+		preparedStatement.setString(4, comentario);
 		
 		preparedStatement.executeUpdate();
 
