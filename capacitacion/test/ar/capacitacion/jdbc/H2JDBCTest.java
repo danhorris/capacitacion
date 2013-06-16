@@ -38,10 +38,10 @@ public class H2JDBCTest {
 	}
 
 	@Test
-	public void testResultSetJDBC() {
+	public void testResultSetStatment() {
 		try {
 			ResultSet resultSet = h2Acces
-					.executeStatment("select count(*) total from comments");
+					.executeStatment("select count(*) total from TEST");
 			Assert.assertNotNull(resultSet.findColumn("total"));
 			
 			//obtengo la primera tupla
@@ -50,6 +50,22 @@ public class H2JDBCTest {
 			Assert.assertEquals(1, resultSet.getInt(1));
 			resultSet.close();
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testPreparedStatementInsert() {
+		try {
+			h2Acces.executePreparedStatementInsertTest("daniel", "danhorris@gmail.com", "primer insert");
+			
+			ResultSet resultSet =  h2Acces.executeStatment("Select count(*) from TEST");
+			resultSet.next();
+			
+			Assert.assertEquals(2,resultSet.getInt(1));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
