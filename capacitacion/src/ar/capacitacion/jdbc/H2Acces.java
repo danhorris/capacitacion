@@ -45,10 +45,11 @@ public class H2Acces {
 		// Statements allow to issue SQL queries to the database
 		Statement statement = conn.createStatement();
 		// Result set get the result of the SQL query
-		ResultSet resultSet = statement.executeQuery(sql);
-
+		ResultSet resultSet = statement.executeQuery(sql);	
 		return resultSet;
 	}
+		
+	
 
 	public Connection getConn() {
 		return conn;
