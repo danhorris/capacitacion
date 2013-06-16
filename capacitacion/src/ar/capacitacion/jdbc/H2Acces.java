@@ -26,7 +26,10 @@ public class H2Acces {
 			Class.forName("org.h2.Driver");
 
 			// protocol:vendor:driver:server:port:serverInstance
-			conn = DriverManager.getConnection("jdbc:h2:~/feedback", "sa", "");
+			// jdbc:h2:~/feedback
+
+			conn = DriverManager.getConnection(
+					"jdbc:h2:tcp://localhost/~/test", "sa", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,7 +49,7 @@ public class H2Acces {
 
 		return resultSet;
 	}
-	
+
 	public Connection getConn() {
 		return conn;
 	}

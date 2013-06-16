@@ -1,5 +1,6 @@
 package ar.capacitacion.jdbc;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import junit.framework.Assert;
@@ -37,14 +38,14 @@ public class H2JDBCTest {
 	}
 
 	@Test
-	public void testStatmentJDBC() {
+	public void testResultSetJDBC() {
 		try {
-	
-			Assert.assertNotNull(h2Acces.executeStatment("select * from comments"));
-		} catch (SQLException e) {
-
+			ResultSet resultSet = h2Acces
+					.executeStatment("select count(*) total from comments");
+			Assert.assertNotNull(resultSet.findColumn("total"));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
+
 }
