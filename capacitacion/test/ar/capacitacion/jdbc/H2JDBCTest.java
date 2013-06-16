@@ -19,7 +19,7 @@ public class H2JDBCTest {
 
 	@Before
 	public void createConnection() {
-		conn = new H2Connection().getConnection();
+		conn = new H2Acces().getConnection();
 	}
 
 	@After

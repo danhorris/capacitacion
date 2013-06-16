@@ -7,7 +7,7 @@ import java.sql.DriverManager;
  * @author dan
  *
  */
-public class H2Connection {
+public class H2Acces {
 
 	/**
 	 * @return
