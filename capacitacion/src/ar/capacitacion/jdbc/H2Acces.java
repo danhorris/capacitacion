@@ -2,18 +2,23 @@ package ar.capacitacion.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * @author dan
- *
+ * 
  */
 public class H2Acces {
+
+	private Connection conn;
 
 	/**
 	 * @return
 	 */
-	public Connection getConnection() {
-		Connection conn = null;
+	public Connection createConnection() {
+		conn = null;
 		try {
 
 			// invoke static to method load() in class "org.h2.Driver"
@@ -21,12 +26,28 @@ public class H2Acces {
 			Class.forName("org.h2.Driver");
 
 			// protocol:vendor:driver:server:port:serverInstance
-			conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:~/feedback", "sa", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return conn;
-
 	}
 
+	/**
+	 * @param sql
+	 * @return ResultSet
+	 * @throws SQLException
+	 */
+	public ResultSet executeStatment(String sql) throws SQLException {
+		// Statements allow to issue SQL queries to the database
+		Statement statement = conn.createStatement();
+		// Result set get the result of the SQL query
+		ResultSet resultSet = statement.executeQuery(sql);
+
+		return resultSet;
+	}
+	
+	public Connection getConn() {
+		return conn;
+	}
 }

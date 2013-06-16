@@ -1,6 +1,5 @@
 package ar.capacitacion.jdbc;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import junit.framework.Assert;
@@ -15,17 +14,18 @@ import org.junit.Test;
  */
 public class H2JDBCTest {
 
-	private Connection conn;
+	private H2Acces h2Acces;
 
 	@Before
 	public void createConnection() {
-		conn = new H2Acces().getConnection();
+		h2Acces = new H2Acces();
+		h2Acces.createConnection();
 	}
 
 	@After
 	public void closeConnection() {
 		try {
-			conn.close();
+			h2Acces.getConn().close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -33,11 +33,18 @@ public class H2JDBCTest {
 
 	@Test
 	public void testConnection() {
-		Assert.assertNotNull(conn);
+		Assert.assertNotNull(h2Acces.getConn());
 	}
 
 	@Test
-	public void testStamentJDBC() {
+	public void testStatmentJDBC() {
+		try {
+	
+			Assert.assertNotNull(h2Acces.executeStatment("select * from comments"));
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
 
 	}
 }
