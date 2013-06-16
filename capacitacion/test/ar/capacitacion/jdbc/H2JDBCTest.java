@@ -61,11 +61,10 @@ public class H2JDBCTest {
 			
 			ResultSet resultSet =  h2Acces.executeStatment("Select count(*) from TEST");
 			resultSet.next();
-			
 			Assert.assertEquals(2,resultSet.getInt(1));
+			resultSet.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
