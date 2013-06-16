@@ -54,7 +54,7 @@ public class H2Acces {
 	}
 
 	
-	public void executePreparedStatementInsertTest(String user,String email, String comentario) throws SQLException {
+	public int executePreparedStatementInsertTest(String user,String email, String comentario) throws SQLException {
 
 		// PreparedStatements can use variables and are more efficient
 		PreparedStatement preparedStatement = conn
@@ -69,7 +69,7 @@ public class H2Acces {
 		preparedStatement.setDate(3, new Date(calendar.getTimeInMillis()));
 		preparedStatement.setString(4, comentario);
 		
-		preparedStatement.executeUpdate();
+		return preparedStatement.executeUpdate();
 
 	}
 
