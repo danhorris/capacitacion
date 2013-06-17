@@ -17,6 +17,8 @@ public class H2JDBCTest {
 
 	private H2Acces h2Acces;
 
+	private String url = "jdbc:h2:mem;INIT=runscript from '~/create.sql'\\;runscript from '~/populate.sql'";
+	
 	@Before
 	public void createConnection() {
 		h2Acces = new H2Acces();

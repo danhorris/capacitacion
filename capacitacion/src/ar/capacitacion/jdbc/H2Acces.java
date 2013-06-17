@@ -40,9 +40,10 @@ public class H2Acces {
 			// jdbc:h2:tcp://<server>[:<port>]/[<path>]<databaseName>
 			// jdbc:h2:tcp://localhost/~/test
 			// jdbc:h2:tcp://dbserv:8084/~/sample
-			// jdbc:h2:tcp://localhost/mem:test			
+			// jdbc:h2:tcp://localhost/mem:test	
+			   
 
-			conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/mem:test;INIT=runscript from '~/create.sql'", "sa", "");
 
 		} catch (Exception e) {
 			e.printStackTrace();
