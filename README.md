@@ -1,7 +1,7 @@
 capacitacion
 ------------
 
-Proyecto con ejemplos practicos para capacitacion en lenguaje JAVA. 
+Proyecto que agrupa ejemplos practicos para capacitacion en lenguaje JAVA. 
 
 Temas
 
