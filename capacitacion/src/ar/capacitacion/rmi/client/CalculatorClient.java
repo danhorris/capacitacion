@@ -3,7 +3,6 @@ package ar.capacitacion.rmi.client;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 
-import ar.capacitacion.rmi.ICalculator;
 
 public class CalculatorClient {
 

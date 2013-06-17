@@ -1,7 +1,9 @@
-package ar.capacitacion.rmi;
+package ar.capacitacion.rmi.server;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
+import ar.capacitacion.rmi.client.ICalculator;
 
 /**
  * @author dan

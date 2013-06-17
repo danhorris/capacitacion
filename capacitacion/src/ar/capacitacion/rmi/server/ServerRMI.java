@@ -5,8 +5,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import ar.capacitacion.rmi.CalculatorImpl;
-import ar.capacitacion.rmi.ICalculator;
+import ar.capacitacion.rmi.client.ICalculator;
 
 /**
  * @author dan

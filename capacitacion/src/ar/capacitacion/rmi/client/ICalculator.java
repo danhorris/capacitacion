@@ -1,4 +1,4 @@
-package ar.capacitacion.rmi;
+package ar.capacitacion.rmi.client;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
