@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.sql.Date;
 import java.util.Calendar;
 
-
 /**
  * @author dan
  * 
@@ -30,10 +29,21 @@ public class H2Acces {
 			Class.forName("org.h2.Driver");
 
 			// protocol:vendor:driver:server:port:serverInstance
-			// jdbc:h2:~/feedback
+			
+			// In-memory (private)
+			// jdbc:h2:mem:
+			// In-memory (named)
+			// jdbc:h2:mem:<databaseName>
+			// jdbc:h2:mem:test_mem
+			
+			// Server mode (remote connections) using TCP/IP
+			// jdbc:h2:tcp://<server>[:<port>]/[<path>]<databaseName>
+			// jdbc:h2:tcp://localhost/~/test
+			// jdbc:h2:tcp://dbserv:8084/~/sample
+			// jdbc:h2:tcp://localhost/mem:test			
 
-			conn = DriverManager.getConnection(
-					"jdbc:h2:tcp://localhost/~/test", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,22 +63,20 @@ public class H2Acces {
 		return resultSet;
 	}
 
-	
-	public int executePreparedStatementInsertTest(String user,String email, String comentario) throws SQLException {
+	public int executePreparedStatementInsertTest(String user, String email,
+			String comentario) throws SQLException {
 
 		// PreparedStatements can use variables and are more efficient
 		PreparedStatement preparedStatement = conn
-				.prepareStatement("insert into TEST values (default, ?, ?, ?, ?)");
-
+				.prepareStatement("insert into TEST values (default, ?, ?, ?)");
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new java.util.Date());
-		
+
 		preparedStatement.setString(1, user);
-		preparedStatement.setString(2, email);
-		preparedStatement.setDate(3, new Date(calendar.getTimeInMillis()));
-		preparedStatement.setString(4, comentario);
-		
+		preparedStatement.setDate(2, new Date(calendar.getTimeInMillis()));
+		preparedStatement.setString(3, comentario);
+
 		return preparedStatement.executeUpdate();
 
 	}
