@@ -88,4 +88,21 @@ public class H2JDBCTest {
 		}
 
 	}
+	
+	@Test
+	public void testInsertarEmpleado() {
+			
+			Empleado empleado = new Empleado();
+			empleado.setNombre("Joe");
+			empleado.setObservaciones("primer insert");
+			try {
+				Assert.assertEquals(1, h2Acces.insertarEmpleado(empleado));
+			} catch (SQLException e) {
+ 
+				e.printStackTrace();
+			}
+			
+
+	}
+	
 }

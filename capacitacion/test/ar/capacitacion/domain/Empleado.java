@@ -5,6 +5,8 @@ public class Empleado {
 	private Long id;
 
 	private String nombre;
+	
+	private String observaciones;
 
 	public Empleado() {
 		super();
@@ -24,6 +26,14 @@ public class Empleado {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 
 }

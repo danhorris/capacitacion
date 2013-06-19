@@ -108,4 +108,17 @@ public class H2Acces {
 		return empleado;
 
 	}
+
+	public int insertarEmpleado(Empleado empleado) throws SQLException {
+		PreparedStatement preparedStatement = conn
+				.prepareStatement("INSERT INTO EMPLEADO VALUES (default,?,?,?)");
+		Calendar calendar = Calendar.getInstance();
+		
+		
+		preparedStatement.setString(1, empleado.getNombre());
+		preparedStatement.setDate(2, new Date(calendar.getTimeInMillis()));
+		preparedStatement.setString(3, empleado.getObservaciones());
+
+		return preparedStatement.executeUpdate();
+	}
 }
