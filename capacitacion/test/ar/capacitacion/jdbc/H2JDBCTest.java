@@ -81,7 +81,7 @@ public class H2JDBCTest {
 	public void testBuscarEmpleado() {
 		try {
 			Empleado empleado = h2Acces.getEmpleado(1);
-//			Assert.assertEquals(new Long(0), empleado.getNroOficina());
+			Assert.assertNull(empleado.getNroOficina());
 			Assert.assertEquals("daniel", empleado.getNombre());
 			Assert.assertNull(empleado.getFechaAlta());
 			
