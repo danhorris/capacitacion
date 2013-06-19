@@ -68,12 +68,12 @@ public class H2Acces {
 		return resultSet;
 	}
 
-	public int executePreparedStatementInsertTest(String user, String email,
-			String comentario) throws SQLException {
+	public int executePreparedStatementInsertTest(String user, String comentario)
+			throws SQLException {
 
 		// PreparedStatements can use variables and are more efficient
 		PreparedStatement preparedStatement = conn
-				.prepareStatement("INSERT INTO EMPLEADO VALUES (default, ?, ?, ?)");
+				.prepareStatement("INSERT INTO EMPLEADO (ID, NOMBRE, FECHA_ALTA,observaciones) VALUES (default, ?, ?, ?)");
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new java.util.Date());
@@ -103,6 +103,7 @@ public class H2Acces {
 			empleado = new Empleado();
 			empleado.setId(resultSet.getLong(1));
 			empleado.setNombre(resultSet.getString(2));
+			empleado.setFechaAlta(resultSet.getDate(3));
 		}
 
 		return empleado;
@@ -111,10 +112,9 @@ public class H2Acces {
 
 	public int insertarEmpleado(Empleado empleado) throws SQLException {
 		PreparedStatement preparedStatement = conn
-				.prepareStatement("INSERT INTO EMPLEADO VALUES (default,?,?,?)");
+				.prepareStatement("INSERT INTO EMPLEADO (ID, NOMBRE, FECHA_ALTA,observaciones) VALUES (default,?,?,?)");
 		Calendar calendar = Calendar.getInstance();
-		
-		
+
 		preparedStatement.setString(1, empleado.getNombre());
 		preparedStatement.setDate(2, new Date(calendar.getTimeInMillis()));
 		preparedStatement.setString(3, empleado.getObservaciones());

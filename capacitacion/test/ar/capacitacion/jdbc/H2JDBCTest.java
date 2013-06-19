@@ -64,7 +64,7 @@ public class H2JDBCTest {
 	public void testPreparedStatementInsert() {
 		try {
 			Assert.assertEquals(1, h2Acces.executePreparedStatementInsertTest(
-					"daniel", "danhorris@gmail.com", "primer insert"));
+					"daniel", "primer insert"));
 
 			ResultSet resultSet = h2Acces
 					.executeStatment("Select count(*) from EMPLEADO");
@@ -81,7 +81,10 @@ public class H2JDBCTest {
 	public void testBuscarEmpleado() {
 		try {
 			Empleado empleado = h2Acces.getEmpleado(1);
+//			Assert.assertEquals(new Long(0), empleado.getNroOficina());
 			Assert.assertEquals("daniel", empleado.getNombre());
+			Assert.assertNull(empleado.getFechaAlta());
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
