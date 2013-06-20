@@ -49,6 +49,8 @@ public class H2Acces {
 	 * jdbc:h2:tcp://localhost/mem:test jdbc:h2:mem;INIT=runscript from
 	 * '~/create.sql'\\;runscript from '~/populate.sql'
 	 * 
+	 * 'classpath:/com/acme/create.sql'
+	 * 
 	 * @return
 	 */
 	public Connection createConnection() {
