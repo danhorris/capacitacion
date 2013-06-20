@@ -19,6 +19,26 @@ public class H2Acces {
 
 	private Connection conn;
 
+	private String urlConnection;
+
+	private String usser;
+
+	private String passwd;
+
+	/**
+	 * Constructor para inyectar dependencias desde afuera.
+	 * 
+	 * @param urlConnection
+	 * @param usser
+	 * @param passwd
+	 */
+	public H2Acces(String urlConnection, String usser, String passwd) {
+		super();
+		this.urlConnection = urlConnection;
+		this.usser = usser;
+		this.passwd = passwd;
+	}
+
 	/**
 	 * In-memory (private) jdbc:h2:mem: In-memory (named)
 	 * jdbc:h2:mem:<databaseName> jdbc:h2:mem:test_mem
@@ -42,10 +62,7 @@ public class H2Acces {
 			Class.forName("org.h2.Driver");
 
 			// protocol:vendor:driver:server:port:serverInstance
-			conn = DriverManager
-					.getConnection(
-							"jdbc:h2:tcp://localhost/mem:test;INIT=runscript from '~/create.sql'",
-							"sa", "");
+			conn = DriverManager.getConnection(urlConnection, usser, passwd);
 
 		} catch (Exception e) {
 			e.printStackTrace();
