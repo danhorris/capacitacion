@@ -21,7 +21,8 @@ public class H2JDBCTest {
 
 	@Before
 	public void createConnection() {
-		h2Acces = new H2Acces();
+		h2Acces = new H2Acces(
+				"jdbc:h2:mem:test;INIT=runscript from '~/create.sql'", "sa", "");
 		h2Acces.createConnection();
 	}
 
@@ -90,7 +91,6 @@ public class H2JDBCTest {
 
 	@Test
 	public void testInsertarEmpleado() {
-
 		Empleado empleado = new Empleado();
 		empleado.setNombre("Joe");
 		empleado.setObservaciones("primer insert");
@@ -100,7 +100,5 @@ public class H2JDBCTest {
 
 			e.printStackTrace();
 		}
-
 	}
-
 }
