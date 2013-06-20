@@ -20,30 +20,28 @@ public class H2Acces {
 	private Connection conn;
 
 	/**
+	 * In-memory (private) jdbc:h2:mem: In-memory (named)
+	 * jdbc:h2:mem:<databaseName> jdbc:h2:mem:test_mem
+	 * 
+	 * Server mode (remote connections) using TCP/IP
+	 * jdbc:h2:tcp://<server>[:<port>]/[<path>]<databaseName>
+	 * jdbc:h2:tcp://localhost/~/test jdbc:h2:tcp://dbserv:8084/~/sample
+	 * jdbc:h2:tcp://localhost/mem:test jdbc:h2:mem;INIT=runscript from
+	 * '~/create.sql'\\;runscript from '~/populate.sql'
+	 * 
 	 * @return
 	 */
 	public Connection createConnection() {
 		conn = null;
 		try {
 
-			// invoke static to method load() in class "org.h2.Driver"
-			// DriverManager.registerDriver(INSTANCE);
+			/**
+			 * invoke static to method load() in class "org.h2.Driver"
+			 * DriverManager.registerDriver(INSTANCE);
+			 */
 			Class.forName("org.h2.Driver");
 
 			// protocol:vendor:driver:server:port:serverInstance
-
-			// In-memory (private)
-			// jdbc:h2:mem:
-			// In-memory (named)
-			// jdbc:h2:mem:<databaseName>
-			// jdbc:h2:mem:test_mem
-
-			// Server mode (remote connections) using TCP/IP
-			// jdbc:h2:tcp://<server>[:<port>]/[<path>]<databaseName>
-			// jdbc:h2:tcp://localhost/~/test
-			// jdbc:h2:tcp://dbserv:8084/~/sample
-			// jdbc:h2:tcp://localhost/mem:test
-
 			conn = DriverManager
 					.getConnection(
 							"jdbc:h2:tcp://localhost/mem:test;INIT=runscript from '~/create.sql'",

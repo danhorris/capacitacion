@@ -19,14 +19,10 @@ public class H2JDBCTest {
 
 	private H2Acces h2Acces;
 
-	// private String url =
-	// "jdbc:h2:mem;INIT=runscript from '~/create.sql'\\;runscript from '~/populate.sql'";
-
 	@Before
 	public void createConnection() {
 		h2Acces = new H2Acces();
 		h2Acces.createConnection();
-
 	}
 
 	@After
@@ -84,28 +80,27 @@ public class H2JDBCTest {
 			Assert.assertNull(empleado.getNroOficina());
 			Assert.assertEquals("daniel", empleado.getNombre());
 			Assert.assertNull(empleado.getFechaAlta());
-			
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
 
 	}
-	
+
 	@Test
 	public void testInsertarEmpleado() {
-			
-			Empleado empleado = new Empleado();
-			empleado.setNombre("Joe");
-			empleado.setObservaciones("primer insert");
-			try {
-				Assert.assertEquals(1, h2Acces.insertarEmpleado(empleado));
-			} catch (SQLException e) {
- 
-				e.printStackTrace();
-			}
-			
+
+		Empleado empleado = new Empleado();
+		empleado.setNombre("Joe");
+		empleado.setObservaciones("primer insert");
+		try {
+			Assert.assertEquals(1, h2Acces.insertarEmpleado(empleado));
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
 
 	}
-	
+
 }
