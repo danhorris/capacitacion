@@ -88,7 +88,7 @@ public class H2Acces {
 
 		// PreparedStatements can use variables and are more efficient
 		PreparedStatement preparedStatement = conn
-				.prepareStatement("INSERT INTO EMPLEADO (ID, NOMBRE, FECHA_ALTA,observaciones) VALUES (default, ?, ?, ?)");
+				.prepareStatement("INSERT INTO EMPLEADO (ID, NOMBRE, FECHA_ALTA, OBSERVACIONES) VALUES (default, ?, ?, ?)");
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new java.util.Date());
