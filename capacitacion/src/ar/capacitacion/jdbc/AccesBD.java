@@ -61,6 +61,7 @@ public class AccesBD {
 	public Connection createConnection() {
 		conn = null;
 		try {
+			// this is a call to load static method of Driver implementation
 			Class.forName(driverClassName);
 
 			// protocol:vendor:driver:server:port:serverInstance
