@@ -2,16 +2,20 @@ package ar.capacitacion.domain;
 
 import java.util.Date;
 
+/**
+ * @author dan
+ * 
+ */
 public class Empleado {
 
 	private Long id;
 
 	private String nombre;
-	
+
 	private String observaciones;
-	
+
 	private Date fechaAlta;
-	
+
 	private Long nroOficina;
 
 	public Empleado() {
