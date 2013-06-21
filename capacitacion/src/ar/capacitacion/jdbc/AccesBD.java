@@ -15,7 +15,7 @@ import ar.capacitacion.domain.Empleado;
  * @author dan
  * 
  */
-public class H2Acces {
+public class AccesBD {
 
 	private Connection conn;
 
@@ -25,15 +25,20 @@ public class H2Acces {
 
 	private String passwd;
 
+	private String driverClassName;
+
 	/**
 	 * Constructor para inyectar dependencias desde afuera.
 	 * 
 	 * @param urlConnection
 	 * @param usser
 	 * @param passwd
+	 * @param string
 	 */
-	public H2Acces(String urlConnection, String usser, String passwd) {
+	public AccesBD(String driverClassName, String urlConnection, String usser,
+			String passwd) {
 		super();
+		this.driverClassName = driverClassName;
 		this.urlConnection = urlConnection;
 		this.usser = usser;
 		this.passwd = passwd;
@@ -57,11 +62,8 @@ public class H2Acces {
 		conn = null;
 		try {
 
-			/**
-			 * invoke static to method load() in class "org.h2.Driver"
-			 * DriverManager.registerDriver(INSTANCE);
-			 */
-			Class.forName("org.h2.Driver");
+			driverClassName = "org.h2.Driver";
+			Class.forName(driverClassName);
 
 			// protocol:vendor:driver:server:port:serverInstance
 			conn = DriverManager.getConnection(urlConnection, usser, passwd);

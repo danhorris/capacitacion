@@ -17,11 +17,11 @@ import ar.capacitacion.domain.Empleado;
  */
 public class H2JDBCTest {
 
-	private H2Acces h2Acces;
+	private AccesBD h2Acces;
 
 	@Before
 	public void createConnection() {
-		h2Acces = new H2Acces(
+		h2Acces = new AccesBD("org.h2.Driver",
 				"jdbc:h2:mem:test;INIT=runscript from '~/create.sql'", "sa", "");
 		h2Acces.createConnection();
 	}
