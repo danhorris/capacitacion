@@ -20,7 +20,7 @@ import ar.capacitacion.domain.Empleado;
  */
 public class AccesBD {
 
-	private Connection conn;
+	private Connection connection;
 
 	private String urlConnection;
 
@@ -62,18 +62,18 @@ public class AccesBD {
 	 * @return
 	 */
 	public Connection createConnection() {
-		conn = null;
+		connection = null;
 		try {
 			// this is a call to load static method of Driver implementation
 			Class.forName(driverClassName);
 
 			// protocol:vendor:driver:server:port:serverInstance
-			conn = DriverManager.getConnection(urlConnection, usser, passwd);
+			connection = DriverManager.getConnection(urlConnection, usser, passwd);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return conn;
+		return connection;
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class AccesBD {
 	 */
 	public ResultSet executeStatment(String sql) throws SQLException {
 		// Statements allow to issue SQL queries to the database
-		Statement statement = conn.createStatement();
+		Statement statement = connection.createStatement();
 		// Result set get the result of the SQL query
 		ResultSet resultSet = statement.executeQuery(sql);
 		return resultSet;
@@ -100,7 +100,7 @@ public class AccesBD {
 			throws SQLException {
 
 		// PreparedStatements can use variables and are more efficient
-		PreparedStatement preparedStatement = conn
+		PreparedStatement preparedStatement = connection
 				.prepareStatement("INSERT INTO EMPLEADO (ID, NOMBRE, FECHA_ALTA, OBSERVACIONES) VALUES (default, ?, ?, ?)");
 
 		Calendar calendar = Calendar.getInstance();
@@ -114,14 +114,14 @@ public class AccesBD {
 
 	}
 
-	public Connection getConn() {
-		return conn;
+	public Connection getConnection() {
+		return connection;
 	}
 
 	public Empleado getEmpleado(int idEmpleado) throws SQLException {
 		Empleado empleado = null;
 
-		PreparedStatement preparedStatement = conn
+		PreparedStatement preparedStatement = connection
 				.prepareStatement("SELECT * FROM EMPLEADO WHERE ID= ?");
 		preparedStatement.setLong(1, idEmpleado);
 
@@ -139,7 +139,7 @@ public class AccesBD {
 	}
 
 	public int insertarEmpleado(Empleado empleado) throws SQLException {
-		PreparedStatement preparedStatement = conn
+		PreparedStatement preparedStatement = connection
 				.prepareStatement("INSERT INTO EMPLEADO (ID, NOMBRE, FECHA_ALTA,observaciones) VALUES (default,?,?,?)");
 		Calendar calendar = Calendar.getInstance();
 

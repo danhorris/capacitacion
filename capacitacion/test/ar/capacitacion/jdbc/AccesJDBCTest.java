@@ -29,7 +29,7 @@ public class AccesJDBCTest {
 	@After
 	public void closeConnection() {
 		try {
-			h2Acces.getConn().close();
+			h2Acces.getConnection().close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -37,7 +37,7 @@ public class AccesJDBCTest {
 
 	@Test
 	public void testConnection() {
-		Assert.assertNotNull(h2Acces.getConn());
+		Assert.assertNotNull(h2Acces.getConnection());
 	}
 
 	@Test
