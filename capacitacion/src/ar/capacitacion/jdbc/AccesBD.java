@@ -61,8 +61,6 @@ public class AccesBD {
 	public Connection createConnection() {
 		conn = null;
 		try {
-
-			driverClassName = "org.h2.Driver";
 			Class.forName(driverClassName);
 
 			// protocol:vendor:driver:server:port:serverInstance
