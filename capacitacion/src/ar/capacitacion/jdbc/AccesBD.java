@@ -12,6 +12,9 @@ import java.util.Calendar;
 import ar.capacitacion.domain.Empleado;
 
 /**
+ * TODO: better handling of exceptions: It's important to ensure that Connection
+ * and Statement objects are always closed, even when an exception occurs.
+ * 
  * @author dan
  * 
  */
@@ -74,6 +77,7 @@ public class AccesBD {
 	}
 
 	/**
+	 * 
 	 * @param sql
 	 * @return ResultSet
 	 * @throws SQLException
@@ -86,6 +90,12 @@ public class AccesBD {
 		return resultSet;
 	}
 
+	/**
+	 * @param user
+	 * @param comentario
+	 * @return
+	 * @throws SQLException
+	 */
 	public int executePreparedStatementInsertTest(String user, String comentario)
 			throws SQLException {
 
