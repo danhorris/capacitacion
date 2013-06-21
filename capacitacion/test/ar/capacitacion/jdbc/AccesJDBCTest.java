@@ -15,7 +15,7 @@ import ar.capacitacion.domain.Empleado;
  * @author dan
  * 
  */
-public class H2JDBCTest {
+public class AccesJDBCTest {
 
 	private AccesBD h2Acces;
 
